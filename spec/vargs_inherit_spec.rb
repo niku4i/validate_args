@@ -2,7 +2,7 @@ describe Vargs do
   describe 'inherit' do
     let(:klass_base) {
       Class.new do
-        extend Vargs::DSL
+        extend Vargs
       end
     }
     let(:klass) {
@@ -25,7 +25,7 @@ describe Vargs do
   describe 'orver ride rule on child class' do
     let(:klass_base) {
       Class.new do
-        extend Vargs::DSL
+        extend Vargs
 
         validate_args :hi, Numeric
         def hi(i)

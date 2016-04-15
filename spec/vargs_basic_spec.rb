@@ -4,7 +4,7 @@ describe Vargs do
   describe 'single argument' do
     let(:klass) {
       Class.new do
-        extend Vargs::DSL
+        extend Vargs
         validate_args :hi, String
         def hi(str)
           str
@@ -24,7 +24,7 @@ describe Vargs do
   describe 'multiple arguments' do
     let(:klass) {
       Class.new do
-        extend Vargs::DSL
+        extend Vargs
         validate_args :sum, [Numeric, Numeric]
         def sum(x, y)
           x + y
@@ -44,7 +44,7 @@ describe Vargs do
   describe 'hash arguments' do
     let(:klass) {
       Class.new do
-        extend Vargs::DSL
+        extend Vargs
         validate_args :do_something, {
           'uri'        => { isa: String },
           'schema'     => { isa: String, default: 'http' },
@@ -82,7 +82,7 @@ describe Vargs do
   describe 'class + hash arguments' do
     let(:klass) {
       Class.new do
-        extend Vargs::DSL
+        extend Vargs
         validate_args :do_something, [Symbol, {
           'uri'        => { isa: String },
           'schema'     => { isa: String, default: 'http' },
