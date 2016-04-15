@@ -25,7 +25,7 @@ task :benchmark do
 
   puts "vargs version: #{Vargs::VERSION}"
   class VargsClass
-    extend Vargs::DSL
+    extend Vargs
     validate_args :sum, [Numeric, Numeric]
     def sum(x, y)
       x + y
@@ -73,7 +73,7 @@ task :benchmark2 do
 
   puts "vargs version: #{Vargs::VERSION}"
   class VargsClass
-    extend Vargs::DSL
+    extend Vargs
     validate_args :do_something, 'uri' => String
     def do_something(params = {})
       params
@@ -121,7 +121,7 @@ task :benchmark3 do
 
   puts "vargs version: #{Vargs::VERSION}"
   class VargsClass
-    extend Vargs::DSL
+    extend Vargs
     validate_args :do_something, 'uri' => String
     def do_something(params = {})
       params
@@ -146,7 +146,7 @@ task :mem_benchmark do
 
   puts "vargs version: #{Vargs::VERSION}"
   class Foo
-    extend Vargs::DSL
+    extend Vargs
     validate_args :do_something, [Numeric, 'uri' => String]
     def do_something(i, params)
     end
