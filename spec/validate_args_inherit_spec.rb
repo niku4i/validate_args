@@ -1,8 +1,8 @@
-describe Vargs do
+describe ValidateArgs do
   describe 'inherit' do
     let(:klass_base) {
       Class.new do
-        extend Vargs
+        extend ValidateArgs
       end
     }
     let(:klass) {
@@ -18,14 +18,14 @@ describe Vargs do
     end
 
     it "exception" do
-      expect { klass.new.hi(1) }.to raise_error Vargs::ArgumentTypeError
+      expect { klass.new.hi(1) }.to raise_error ValidateArgs::ArgumentTypeError
     end
   end
 
   describe 'orver ride rule on child class' do
     let(:klass_base) {
       Class.new do
-        extend Vargs
+        extend ValidateArgs
 
         validate_args :hi, Numeric
         def hi(i)
@@ -46,7 +46,7 @@ describe Vargs do
     end
 
     it "exception" do
-      expect { klass.new.hi(1) }.to raise_error Vargs::ArgumentTypeError
+      expect { klass.new.hi(1) }.to raise_error ValidateArgs::ArgumentTypeError
     end
 
   end

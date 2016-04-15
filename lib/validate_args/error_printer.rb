@@ -1,6 +1,6 @@
-require 'vargs/utils'
+require 'validate_args/utils'
 
-module Vargs
+module ValidateArgs
   class ErrorPrinter
     def initialize(owner, meth, errors)
       @owner = owner

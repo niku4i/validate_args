@@ -1,7 +1,7 @@
 require 'data/validator'
-require 'vargs'
+require 'validate_args'
 
-module Vargs
+module ValidateArgs
   module Validators
     @@validators = Hash.new({})
 
@@ -12,7 +12,7 @@ module Vargs
         @@validators[owner][meth] = rules.map {|rule| Data::Validator.new(rule) }
         __proxy__.module_eval do
           define_method(meth) do |*args|
-            ::Vargs::Validators.validate!(self, meth, args)
+            ::ValidateArgs::Validators.validate!(self, meth, args)
             super(*args)
           end
         end

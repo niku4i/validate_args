@@ -1,10 +1,10 @@
 require 'spec_helper'
 
-describe Vargs do
+describe ValidateArgs do
   describe 'single argument' do
     let(:klass) {
       Class.new do
-        extend Vargs
+        extend ValidateArgs
         validate_args :hi, String
         def hi(str)
           str
@@ -17,14 +17,14 @@ describe Vargs do
     end
 
     it "exception" do
-      expect { klass.new.hi(1) }.to raise_error Vargs::ArgumentTypeError
+      expect { klass.new.hi(1) }.to raise_error ValidateArgs::ArgumentTypeError
     end
   end
 
   describe 'multiple arguments' do
     let(:klass) {
       Class.new do
-        extend Vargs
+        extend ValidateArgs
         validate_args :sum, [Numeric, Numeric]
         def sum(x, y)
           x + y
@@ -37,14 +37,14 @@ describe Vargs do
     end
 
     it "exception" do
-      expect { klass.new.sum(:no_int, 2) }.to raise_error Vargs::ArgumentTypeError
+      expect { klass.new.sum(:no_int, 2) }.to raise_error ValidateArgs::ArgumentTypeError
     end
   end
 
   describe 'hash arguments' do
     let(:klass) {
       Class.new do
-        extend Vargs
+        extend ValidateArgs
         validate_args :do_something, {
           'uri'        => { isa: String },
           'schema'     => { isa: String, default: 'http' },
@@ -75,14 +75,14 @@ describe Vargs do
     end
 
     it "exception" do
-      expect { klass.new.do_something('uri' => 1 ) }.to raise_error Vargs::ArgumentTypeError
+      expect { klass.new.do_something('uri' => 1 ) }.to raise_error ValidateArgs::ArgumentTypeError
     end
   end
 
   describe 'class + hash arguments' do
     let(:klass) {
       Class.new do
-        extend Vargs
+        extend ValidateArgs
         validate_args :do_something, [Symbol, {
           'uri'        => { isa: String },
           'schema'     => { isa: String, default: 'http' },
@@ -108,7 +108,7 @@ describe Vargs do
     end
 
     it "exception" do
-      expect { klass.new.do_something(:sym, 'uri' => 1 ) }.to raise_error Vargs::ArgumentTypeError
+      expect { klass.new.do_something(:sym, 'uri' => 1 ) }.to raise_error ValidateArgs::ArgumentTypeError
     end
   end
 end

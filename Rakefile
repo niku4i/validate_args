@@ -10,8 +10,8 @@ task :default => :spec
 desc "Compare with pure ruby and rubype"
 task :benchmark do
   require "benchmark/ips"
-  require "vargs"
-  require "vargs/version"
+  require "validate_args"
+  require "validate_args/version"
   require 'rubype'
   require 'rubype/version'
 
@@ -23,15 +23,15 @@ task :benchmark do
   end
   pure_instance = PureClass.new
 
-  puts "vargs version: #{Vargs::VERSION}"
-  class VargsClass
-    extend Vargs
+  puts "validate_args version: #{ValidateArgs::VERSION}"
+  class ValidateArgsClass
+    extend ValidateArgs
     validate_args :sum, [Numeric, Numeric]
     def sum(x, y)
       x + y
     end
   end
-  vargs_instance = VargsClass.new
+  validate_args_instance = ValidateArgsClass.new
 
   puts "rubype version: #{Rubype::VERSION}"
   class RubypeClass
@@ -45,7 +45,7 @@ task :benchmark do
 
   Benchmark.ips do |x|
     x.report('Pure Ruby') { pure_instance.sum(4, 2) }
-    x.report('Vargs') { vargs_instance.sum(4, 2) }
+    x.report('ValidateArgs') { validate_args_instance.sum(4, 2) }
     x.report('Rubype') { rubype_instance.sum(4, 2) }
 
     x.compare!
@@ -58,8 +58,8 @@ task bm: :benchmark
 desc "Compare with pure ruby and rubype for hash validation"
 task :benchmark2 do
   require "benchmark/ips"
-  require "vargs"
-  require "vargs/version"
+  require "validate_args"
+  require "validate_args/version"
   require 'rubype'
   require 'rubype/version'
 
@@ -71,15 +71,15 @@ task :benchmark2 do
   end
   pure_instance = PureClass.new
 
-  puts "vargs version: #{Vargs::VERSION}"
-  class VargsClass
-    extend Vargs
+  puts "validate_args version: #{ValidateArgs::VERSION}"
+  class ValidateArgsClass
+    extend ValidateArgs
     validate_args :do_something, 'uri' => String
     def do_something(params = {})
       params
     end
   end
-  vargs_instance = VargsClass.new
+  validate_args_instance = ValidateArgsClass.new
 
   puts "rubype version: #{Rubype::VERSION}"
   class RubypeClass
@@ -92,7 +92,7 @@ task :benchmark2 do
 
   Benchmark.ips do |x|
     x.report('Pure Ruby') { pure_instance.do_something('uri' => 'example.com') }
-    x.report('Vargs') { vargs_instance.do_something('uri' => 'example.com') }
+    x.report('ValidateArgs') { validate_args_instance.do_something('uri' => 'example.com') }
     x.report('Rubype') { rubype_instance.do_something('uri' => 'example.com') }
 
     x.compare!
@@ -100,13 +100,13 @@ task :benchmark2 do
 end
 task bm2: :benchmark2
 
-#  Benchmark3 pure data-validator vs vargs
+#  Benchmark3 pure data-validator vs validate_args
 #-----------------------------------------------
-desc "Compare with pure data-validator and vargs"
+desc "Compare with pure data-validator and validate_args"
 task :benchmark3 do
   require "benchmark/ips"
-  require "vargs"
-  require "vargs/version"
+  require "validate_args"
+  require "validate_args/version"
   require 'data/validator'
   require 'data/validator/version'
 
@@ -119,19 +119,19 @@ task :benchmark3 do
   end
   data_validator_instance = DataValidatorClass.new
 
-  puts "vargs version: #{Vargs::VERSION}"
-  class VargsClass
-    extend Vargs
+  puts "validate_args version: #{ValidateArgs::VERSION}"
+  class ValidateArgsClass
+    extend ValidateArgs
     validate_args :do_something, 'uri' => String
     def do_something(params = {})
       params
     end
   end
-  vargs_instance = VargsClass.new
+  validate_args_instance = ValidateArgsClass.new
 
   Benchmark.ips do |x|
     x.report('DataValidator') { data_validator_instance.do_something('uri' => 'example.com') }
-    x.report('Vargs') { vargs_instance.do_something('uri' => 'example.com') }
+    x.report('ValidateArgs') { validate_args_instance.do_something('uri' => 'example.com') }
 
     x.compare!
   end
@@ -140,13 +140,13 @@ task bm3: :benchmark3
 
 desc "Memory growth test"
 task :mem_benchmark do
-  require "vargs"
-  require "vargs/version"
+  require "validate_args"
+  require "validate_args/version"
   N = (ENV['N'] || 100_000).to_i
 
-  puts "vargs version: #{Vargs::VERSION}"
+  puts "validate_args version: #{ValidateArgs::VERSION}"
   class Foo
-    extend Vargs
+    extend ValidateArgs
     validate_args :do_something, [Numeric, 'uri' => String]
     def do_something(i, params)
     end

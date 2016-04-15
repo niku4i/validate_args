@@ -1,5 +1,5 @@
 # Borrowed from ActiveSupport::Inflector
-module Vargs
+module ValidateArgs
   module Utils
     class << self
       def ordinalize(number)

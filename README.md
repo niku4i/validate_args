@@ -1,4 +1,4 @@
-# vargs
+# validate_args
 
 validates method arguments with data-validator syntax.
 
@@ -7,7 +7,7 @@ validates method arguments with data-validator syntax.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'vargs'
+gem 'validate_args'
 ```
 
 And then execute:
@@ -16,7 +16,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install vargs
+    $ gem install validate_args
 
 ## Usage
 
@@ -24,11 +24,11 @@ Define validation rule with `validate_args` syntax and rule.
 
 ```ruby
 
-require 'vargs'
+require 'validate_args'
 
 class MyClass
 
-  extend Vargs
+  extend ValidateArgs
 
   validate_args :sum, [Numeric, Numeric]
   def sum(x, y)
@@ -86,7 +86,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/vargs.
+Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/validate_args.
 
 
 ## License

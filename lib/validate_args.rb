@@ -1,7 +1,7 @@
-module Vargs
-  require "vargs/version"
-  require "vargs/error_printer"
-  require "vargs/validators"
+module ValidateArgs
+  require "validate_args/version"
+  require "validate_args/error_printer"
+  require "validate_args/validators"
 
   class ArgumentTypeError < StandardError; end
 

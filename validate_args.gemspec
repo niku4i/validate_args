@@ -1,17 +1,17 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'vargs/version'
+require 'validate_args/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "vargs"
-  spec.version       = Vargs::VERSION
+  spec.name          = "validate_args"
+  spec.version       = ValidateArgs::VERSION
   spec.authors       = ["Nobuhiro Nikushi"]
   spec.email         = ["deneb.ge@gmail.com"]
 
   spec.summary       = %q{Validation for method arguments}
   spec.description   = %q{method argumetns validation mechanism with data-validator}
-  spec.homepage      = "https://github.com/niku4i/vargs"
+  spec.homepage      = "https://github.com/niku4i/validate_args"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org by setting 'allowed_push_host', or
