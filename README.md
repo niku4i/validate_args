@@ -28,7 +28,7 @@ require 'vargs'
 
 class MyClass
 
-  extend Vargs::DSL
+  extend Vargs
 
   validate_args :sum, [Numeric, Numeric]
   def sum(x, y)
