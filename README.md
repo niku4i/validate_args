@@ -1,4 +1,4 @@
-# ValidateArgs
+# ValidateArgs [![Build Status](https://travis-ci.org/niku4i/validate_args.svg?branch=master)](https://travis-ci.org/niku4i/validate_args)
 
 ValidateArgs allows you to specify validations for method arguments, using `validate_args` to supply validation rules of a hash or array. Validations you declared would be called automatically before method calls.
 
