@@ -9,7 +9,7 @@ module ValidateArgs
     end
 
     def to_s
-      @errors.map.with_index do |message, i|
+      @errors.zip(0..@errors.size).reject{|message, i| message.nil? }.map do |message, i|
         "for #{@owner.class}##{@meth}'s #{Utils.ordinalize(i+1)} argument is invalid => #{message}"
       end.join("\n")
     end

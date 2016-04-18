@@ -39,6 +39,16 @@ describe ValidateArgs do
     it "exception" do
       expect { klass.new.sum(:no_int, 2) }.to raise_error ValidateArgs::ArgumentTypeError
     end
+
+    it "exception" do
+      begin
+        klass.new.sum(1, 'string')
+      rescue => e
+      end
+      expect(e).to be_a ValidateArgs::ArgumentTypeError
+      expect(e.message).not_to match /1st argument is invalid/
+      expect(e.message).to match /2nd argument is invalid/
+    end
   end
 
   describe 'hash arguments' do
