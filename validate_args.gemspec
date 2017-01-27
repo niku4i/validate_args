@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = %q{Validation system for method arguments}
   spec.description   = %q{It allows you to specify validations for method arguments, using `validate_args` to supply validation rules of a hash or array.}
-  spec.homepage      = "https://github.com/niku4i/validate_args"
+  spec.homepage      = "https://github.com/nikushi/validate_args"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org by setting 'allowed_push_host', or
